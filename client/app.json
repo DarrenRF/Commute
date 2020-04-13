@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "Commute",
+    "slug": "commute",
+    "privacy": "public",
+    "sdkVersion": "35.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "android": {
+      "splash": {
+      "backgroundColor": "#3CB219",
+        "resizeMode": "native",
+        "mdpi": "./assets/drawable-mdpi/splash.png",
+        "hdpi": "./assets/drawable-hdpi/splash.png",
+        "xhdpi": "./assets/drawable-xhdpi/splash.png",
+        "xxhdpi": "./assets/drawable-xxhdpi/splash.png",
+        "xxxhdpi": "./assets/drawable-xxxhdpi/splash.png"
+      },
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "splash": {
+        "image": "./assets/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#3CB219"
+      },
+      "supportsTablet": true
+    }
+  }
+}

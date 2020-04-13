@@ -1,0 +1,51 @@
+import React, { useState, useContext, useEffect } from 'react';
+import { View, StyleSheet, Text, Switch } from 'react-native';
+import { Context as LocationContext } from '../context/LocationContext';
+import gql from 'graphql-tag';
+import { useLazyQuery } from '@apollo/react-hooks';
+
+const DriverSwitch = ({ getPassengers, addDriverLocation , driverState, setState, currentLocation }) => {
+  const { state: { driverModeEnabled },
+    setDriverModeEnabled,
+    setDriverModeDisabled
+} = useContext(LocationContext);
+
+  const toggleTrueFalse = () => setState(!driverState);
+
+  useEffect(() => {
+    if (driverState) {
+      getPassengers()
+      addDriverLocation({
+        variables: {
+          driverCoordinate: [currentLocation.coords.latitude, currentLocation.coords.longitude],
+        }
+      })
+    }
+  }, [driverState])
+
+
+  return (
+    <View style={styles.backgroundStyle}>
+    <Text style={{fontSize: 16}}>Driver Mode: </Text>
+    <Switch
+      onValueChange={toggleTrueFalse}
+      value={driverState}
+      trackColor={'orange'}
+    />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  backgroundStyle: {
+    marginTop: 0,
+    height: 50,
+    borderRadius: 5,
+    marginHorizontal: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 0
+  }
+});
+
+export default DriverSwitch;
