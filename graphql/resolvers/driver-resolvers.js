@@ -6,6 +6,17 @@ const { PubSub } = require('graphql-subscriptions');
 const pubsub = new PubSub();
 
 module.exports = {
+<<<<<<< HEAD
+  getDrivers: async (_, { onTrip, ...rest }, { driver }) => {
+    try {
+      await requireDriverAuth(driver);
+      if (onTrip) {
+        return null;
+      }
+      return Driver.find({}).sort({ createdAt: -1 });
+    } catch (error) {
+      throw error;
+=======
   getDrivers: async (_, { onTrip, ...rest}, { driver }) => {
     try {
       await requireDriverAuth(driver)
@@ -15,6 +26,7 @@ module.exports = {
       return Driver.find({}).sort({ createdAt: -1 })
     } catch (error) {
       throw error
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
     }
   },
 
@@ -31,15 +43,24 @@ module.exports = {
       });
 
       return currentDriver.save();
+<<<<<<< HEAD
+    } catch (error) {
+      throw error;
+=======
 
     } catch (error) {
       throw error
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
     }
   },
   updateUserWithDriver: async (_, { _id, ...rest }, { driver }) => {
     try {
       await requireDriverAuth(driver);
+<<<<<<< HEAD
+      const user = await User.findOne({ _id });
+=======
       const user = await User.findOne({_id});
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
       if (!user) {
         throw new Error('Not found!');
       }
@@ -48,21 +69,47 @@ module.exports = {
         user[key] = value;
       });
 
+<<<<<<< HEAD
+      pubsub.publish('updateUserWithDriverSub', {
+        updateUserWithDriverSub: user,
+      });
+
+      return user.save();
+    } catch (error) {
+      throw error;
+=======
       pubsub.publish('updateUserWithDriverSub', { updateUserWithDriverSub: user })
 
       return user.save();
 
     } catch (error) {
       throw error
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
     }
   },
 
   updateUserWithDriverSub: {
+<<<<<<< HEAD
+    subscribe: async () => pubsub.asyncIterator(['updateUserWithDriverSub']),
+=======
     subscribe: async () => pubsub.asyncIterator(['updateUserWithDriverSub'])
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
   },
 
   currentDriver: async (_, args, { driver }) => {
     try {
+<<<<<<< HEAD
+      const currentDriver = await requireDriverAuth(driver);
+      return currentDriver;
+    } catch (error) {
+      throw error;
+    }
+  },
+  deleteDriver: async (_, { _id }, { driver }) => {
+    try {
+      await requireDriverAuth(driver);
+      const driver = await Driver.findOne({ _id, driver: driver._id });
+=======
       const currentDriver = await requireDriverAuth(driver)
       return currentDriver;
     } catch (error) {
@@ -73,6 +120,7 @@ module.exports = {
     try {
       await requireDriverAuth(driver)
       const driver = await Driver.findOne({_id, driver: driver._id});
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
 
       if (!driver) {
         throw new Error('Not found!');
@@ -84,5 +132,9 @@ module.exports = {
     } catch (error) {
       throw error;
     }
+<<<<<<< HEAD
+  },
+=======
   }
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
 };

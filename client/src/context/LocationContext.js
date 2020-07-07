@@ -15,7 +15,11 @@ const locationReducer = (state, action) => {
     case 'not_on_trip':
       return { ...state, onTrip: false };
     case 'add_location':
+<<<<<<< HEAD
+      return { ...state, locations: [...state.locations, action.payload] };
+=======
       return { ...state, locations: [ ...state.locations, action.payload ] };
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
     case 'change_name':
       return { ...state, name: action.payload };
     case 'driver_mode_enabled':
@@ -24,12 +28,19 @@ const locationReducer = (state, action) => {
       return { ...state, driverModeEnabled: false };
     default:
       return state;
+<<<<<<< HEAD
+  }
+};
+
+const setDriverModeEnabled = (dispatch) => () => {
+=======
 
   }
 };
 
 
 const setDriverModeEnabled = dispatch => () => {
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
   const GET_PASSENGERS = gql`
     {
       getPassengers {
@@ -43,6 +54,40 @@ const setDriverModeEnabled = dispatch => () => {
   dispatch({ type: 'driver_mode_enabled', payload: data });
 };
 
+<<<<<<< HEAD
+const setDriverModeDisabled = (dispatch) => () => {
+  dispatch({ type: 'driver_mode_disabled' });
+};
+
+const changeName = (dispatch) => (name) => {
+  dispatch({ type: 'change_name', payload: name });
+};
+
+const isOnTrip = (dispatch) => () => {
+  dispatch({ type: 'is_on_trip' });
+};
+
+const notOnTrip = (dispatch) => () => {
+  dispatch({ type: 'not_on_trip' });
+};
+
+const startSearching = (dispatch) => () => {
+  dispatch({ type: 'start_searching' });
+};
+const stopSearching = (dispatch) => () => {
+  dispatch({ type: 'stop_searching' });
+};
+
+const addLocation = (dispatch) => (location, searching) => {
+  dispatch({ type: 'add_current_location', payload: location });
+
+  if (searching) {
+    dispatch({ type: 'add_location', payload: location });
+  }
+};
+
+const reset = (dispatch) => () => {
+=======
 const setDriverModeDisabled= dispatch => () => {
   dispatch({ type: 'driver_mode_disabled' });
 };
@@ -76,6 +121,7 @@ const addLocation = dispatch => (location, searching) => {
 };
 
 const reset = dispatch => () => {
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
   dispatch({ type: 'reset' });
 };
 
@@ -89,7 +135,11 @@ export const { Provider, Context } = createDataContext(
     setDriverModeEnabled,
     setDriverModeDisabled,
     isOnTrip,
+<<<<<<< HEAD
+    notOnTrip,
+=======
     notOnTrip
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
   },
   {
     name: '',
@@ -97,6 +147,11 @@ export const { Provider, Context } = createDataContext(
     locations: [],
     currentLocation: null,
     driverModeEnabled: false,
+<<<<<<< HEAD
+    OnTrip: false,
+  }
+=======
     OnTrip: false
   },
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
 );

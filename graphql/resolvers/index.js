@@ -19,12 +19,20 @@ module.exports = {
 
   UserLocation: {
     user: ({ user }) => User.findById(user),
+<<<<<<< HEAD
+    driver: ({ driver }) => Driver.findById(driver),
+=======
     driver: ({ driver }) => Driver.findById(driver)
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
   },
 
   DriverLocation: {
     user: ({ user }) => User.findById(user),
+<<<<<<< HEAD
+    driver: ({ driver }) => Driver.findById(driver),
+=======
     driver: ({ driver }) => Driver.findById(driver)
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
   },
 
   Query: {
@@ -40,7 +48,11 @@ module.exports = {
   Subscription: {
     updateLocation: DriverLocationResolvers.updateLocation,
     updateUserWithDriverSub: DriverResolvers.updateUserWithDriverSub,
+<<<<<<< HEAD
+    getPassengersSub: DriverLocationResolvers.getPassengersSub,
+=======
     getPassengersSub: DriverLocationResolvers.getPassengersSub
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
   },
   Mutation: {
     addPickupLocation: UserLocationResolvers.addPickupLocation,
@@ -56,5 +68,10 @@ module.exports = {
     deleteTrip: TripResolvers.deleteTrip,
     signup: UserResolvers.signup,
     login: UserResolvers.login,
+<<<<<<< HEAD
+  },
+};
+=======
   }
 }
+>>>>>>> d0e47e5fa7c2eb0f21d2a91a010d138d7d0f5388
