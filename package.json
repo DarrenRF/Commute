@@ -10,7 +10,7 @@
     "test": "jest --forceExit"
   },
   "dependencies": {
-    "apollo-server": "^2.9.12",
+    "apollo-server": "^2.25.3",
     "apollo-server-express": "^2.9.12",
     "bcrypt": "^3.0.7",
     "bcrypt-nodejs": "0.0.3",
